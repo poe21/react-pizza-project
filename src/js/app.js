@@ -8,6 +8,8 @@ var Link = ReactRouter.Link;
 var IndexRoute = ReactRouter.IndexRoute;
 var browserHistory = ReactRouter.browserHistory;
 
+var userInfo = {};
+
 // A simple navigation component
 var Navigation = React.createClass({
   render: function() {
@@ -18,10 +20,10 @@ var Navigation = React.createClass({
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about">About Us</Link>
+            <Link to="/order">Order</Link>
           </li>
           <li>
-            <Link to="/team">Meet the team</Link>
+            <Link to="/choose">Choose</Link>
           </li>
         </ul>
       </nav>
@@ -35,8 +37,20 @@ var App = React.createClass({
   render: function() {
     return (
       <main>
-        <Navigation/>
-        {this.props.children}
+        <header>
+          <Link to='/'><div className="logotype">
+            <i className="ionicons ion-pizza"></i>
+            <h1 className="pizza-text">PizzaCat</h1><i className="ionicons ion-social-octocat"></i>
+          </div></Link>
+          <Navigation/>
+        </header>
+          <img className='pizzacat' src='https://b.thumbs.redditmedia.com/Afwa4gXgbau0iIbab9_HEOj5KdsJ9Gvwa-LvPlznJhU.png'/>
+        <section>
+          {this.props.children}
+        </section>
+        <footer>
+          <p>&copy; PizzaCat 2016</p>
+        </footer>
       </main>
     );
   }
@@ -46,33 +60,51 @@ var App = React.createClass({
 var Home = React.createClass({
   render: function() {
     return (
-      <div>
-        <h1>Homepage!</h1>
-        <p>Welcome to the homepage! Try to click on a link in the nav, then click the browser back button.</p>
+      <div className='content'>
+        <h1>Welcome to PizzaCat!</h1>
+        <Link to='/order'>Order</Link>
       </div>
     );
   }
 });
 
-// about "page"
-var About = React.createClass({
+// order "page"
+var Order = React.createClass({
   render: function() {
     return (
-      <div>
-        <h1>About Page!</h1>
-        <p>Welcome to the about page!</p>
+      <div className='content'>
+        <h1>Order!</h1>
+        <form>
+          <label htmlFor='name'>Name</label>
+          <input type='text' id='name' placeholder='please enter your name' />
+          <label htmlFor='email'>Email</label>
+          <input type='text' id='email' placeholder='please enter your email address' />
+          <label htmlFor='phone'>Phone Number</label>
+          <input type='text' id='phone' placeholder='please enter your phone number' />
+          <div className='address'>
+            <label htmlFor='street'>Street Address</label>
+            <input type='street' id='name' placeholder='please enter your address' />
+            <label htmlFor='city'>City</label>
+            <input type='text' id='city' placeholder='please enter your city' />
+            <label htmlFor='province'>Province</label>
+            <input type='text' id='province' placeholder='please enter your province' />
+            <label htmlFor='postalcode'>Postal Code</label>
+            <input type='text' id='postalcode' placeholder='please enter your postal code' />
+          </div>
+        </form>
+        <Link to='/choose'>Choose your toppings</Link>
       </div>
     );
   }
 });
 
-// team "page"
-var Team = React.createClass({
+// choose "page"
+var Choose = React.createClass({
   render: function() {
     return (
-      <div>
-        <h1>Meet the team!</h1>
-        <p>Welcome to the team page!</p>
+      <div className='content'>
+        <h1>Choose your toppings!</h1>
+        <p>...</p>
       </div>
     );
   }
@@ -104,8 +136,8 @@ var routes = (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home}/>
-      <Route path="about" component={About}/>
-      <Route path="team" component={Team}/>
+      <Route path="order" component={Order}/>
+      <Route path="choose" component={Choose}/>
       <Route path="*" component={NotFound}/>
     </Route>
   </Router>
