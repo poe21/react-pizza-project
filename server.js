@@ -11,6 +11,19 @@ app.use(express.static(__dirname + '/src'));
 
 /* insert any app.get or app.post you need here. only if you do the advanced part */
 
+// app.get('/pizzas', function(request, response) {   change
+//   response.json([
+//     { 
+//       name: '',
+//       photo: ''
+//     },
+//     {
+//       name: '',
+//       photo: ''
+//     }
+//   ]);
+// });
+
 /*
 This says: for any path NOT served by the middleware above, send the file called index.html instead.
 For example, if the client requests http://server/step-2 the server will send the file index.html. Then on the browser, React Router will load the appropriate component

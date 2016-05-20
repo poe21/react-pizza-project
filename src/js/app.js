@@ -13,9 +13,9 @@ var Home = require('./Home');
 var Order = require('./Order');
 var Choose = require('./Choose');
 var Custom = require('./Custom');
+var Confirm = require('./Confirm');
 var Done = require('./Done');
 var NotFound = require('./NotFound');
-var data = require('./data');
 
 // The main application layout
 // this.props.children will be set by React Router depending on the current route
@@ -62,6 +62,7 @@ var routes = (
       <Route path="order" component={Order}/>
       <Route path="choose" component={Choose}/>
       <Route path="custom" component={Custom}/>
+      <Route path="confirm" component={Confirm}/>
       <Route path="done" component={Done}/>
       <Route path="*" component={NotFound}/>
     </Route>

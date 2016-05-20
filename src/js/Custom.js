@@ -4,6 +4,7 @@ var ToppingsCheesesDisplay = require('./ToppingsCheesesDisplay');
 
 var cheeses = data.cheeses;
 var toppings = data.toppings;
+var basePrice = data.basePrice;
 
 var Custom = React.createClass({
   getInitialState: function() {
@@ -36,7 +37,7 @@ var Custom = React.createClass({
   continueOrder: function() {
     data.setData('toppings', this.state.choices);
     
-    this.props.history.push('/done');
+    this.props.history.push('/confirm');
   },
   render: function() {
     var disabled = this.state.choices.length === 0;
@@ -62,7 +63,6 @@ var Custom = React.createClass({
       );
     });
     
-    var basePrice = {name: 'basePrice', price: 10};   // pizza base price
     var choices = this.state.choices;                 // choices of toppings and cheese selected by the user
     var all = cheeses.concat(toppings);               // make an array of both the cheeses and toppings list
     var pricesArray = [basePrice.price];              // make a new array that takes prices (basePrice already included)

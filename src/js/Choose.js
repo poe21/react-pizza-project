@@ -35,7 +35,7 @@ var Choose = React.createClass({
   },
   continueOrder: function() {
     data.setData('pizzas', this.state.pizzas);
-    this.props.history.push('/done');
+    this.props.history.push('/confirm');
   },
   render: function() {
     var disabled = this.state.pizzas.length === 0;

@@ -16,6 +16,9 @@ function setData(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
 }
 
+// Pizza base price
+var basePrice = {name: 'Pizza dough', price: 10};
+
 // Pizzas
 var pizzas = [
   {
@@ -138,5 +141,6 @@ module.exports = {
     getData: getData,
     pizzas: pizzas,
     cheeses: cheeses,
-    toppings: toppings
+    toppings: toppings,
+    basePrice: basePrice
 };
