@@ -34,7 +34,6 @@ var Choose = React.createClass({
     this.props.history.push('/custom');
   },
   continueOrder: function() {
-    console.log(this.state.pizzas, 'esti')
     data.setData('pizzas', this.state.pizzas);
     this.props.history.push('/done');
   },

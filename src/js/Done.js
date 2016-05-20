@@ -42,7 +42,7 @@ var Done = React.createClass({
       
       pizzasList = chosenPizzasObjectsArray.map(function(pizza) {
         return (
-            <BoughtPizzasDisplay name={pizza.name} price={pizza.price} cheese={pizza.cheese} toppings={pizza.toppings}/>
+            <BoughtPizzasDisplay name={pizza.name} price={pizza.price} cheese={pizza.cheese}/>
         );
       });
     } 
@@ -80,10 +80,14 @@ var Done = React.createClass({
         </div>
         <div>
           <h2>Your pizza(s):</h2>
-          {pizzasList}
+          {pizzasList ? pizzasList : null}
         </div>
         <div>
-          {toppings ? toppings : null}
+          {toppingsList ? toppingsList : null}
+        </div>
+        <div>
+          <h2>Price:</h2>
+          
         </div>
       </div>
     );
