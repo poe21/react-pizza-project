@@ -143,7 +143,7 @@ ul, li {
   position: relative;
 }
 
-.img-container img {
+.img-container img, .img-container-toppings img {
   height: 100%;
   vertical-align: top;
 }
@@ -165,7 +165,7 @@ ul, li {
 
 .pizzas .pizzaIngredients {
   position: absolute;
-  top: 10px;
+  top: 7px;
   left: 10px;
   opacity: 0;
   font-size: 0.9em;
@@ -177,6 +177,24 @@ ul, li {
   opacity: 1;
 }
 
+.img-container-toppings {
+  width: 3em;
+  height: 3em;
+  overflow: hidden;
+  position: relative;
+}
+
+// label {
+//   position: relative;
+// }
+
+// .pizzaCheckbox {
+//   position: absolute;
+//   right: 10px;
+//   top: 10px;
+//   z-index: 200;
+// }
+
 .results {
   display: flex;
   flex-wrap: wrap;
@@ -186,7 +204,7 @@ ul, li {
   display: flex;
 }
 
-.pizzaName {
+.pizzaName, .toppingName {
   font-weight: bold;
 }
 

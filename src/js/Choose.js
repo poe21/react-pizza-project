@@ -10,28 +10,42 @@ var Choose = React.createClass({
       pizzas: []
     };
   },
-  handleChange: function(changedField, event) {
-    var obj = {name: event.target.name, price: event.target.price};
+  handleSelection: function(event) {
+    var box = event.target;
+    var isChecked = box.checked;
+    var value = box.value;
     
-    this.setState({
-      pizzas: this.state.pizzas.concat([obj])
-    });
+    if (isChecked) {
+      this.setState({
+        pizzas: this.state.pizzas.concat(value)
+      });
+    }
+    else {
+      var index = this.state.pizzas.indexOf(value);
+      var oldState = this.state.pizzas;
+      var newState = oldState.slice(0, index).concat(oldState.slice(index + 1));
+      
+      this.setState({
+        pizzas: newState
+      });
+    }
   },
   customPizza: function() {
     this.props.history.push('/custom');
   },
   continueOrder: function() {
-    data.setData('pizzas', this.state);
+    console.log(this.state.pizzas, 'esti')
+    data.setData('pizzas', this.state.pizzas);
     this.props.history.push('/done');
   },
   render: function() {
-    var disabled = true;  // change this
+    var disabled = this.state.pizzas.length === 0;
     var that = this;
     
-    var pizzasList = pizzas.map(function(result, i) {
+    var pizzasList = pizzas.map(function(result) {
       return (
         <label>
-          <input onChange={that.handleChange} type='checkbox' id='{result.name} + i' name={result.name} value={result.price} />
+          <input className='pizzaCheckbox' onChange={that.handleSelection} type='checkbox' name='pizza' value={result.name} />
           <PizzaDisplay photo={result.photo} name={result.name} price={result.price} cheese={result.cheese} toppings={result.toppings}/>
         </label>
       );
@@ -46,7 +60,7 @@ var Choose = React.createClass({
           </ul>
         </form>
         <div className='buttonSet'>
-          <button onClick={this.customPizza} type='button' disabled={disabled}>Create a custom pizza</button>
+          <button onClick={this.customPizza} type='button'>Create a custom pizza</button>
           <button onClick={this.continueOrder} type='button' disabled={disabled}>Place your order</button>
         </div>
       </div>
